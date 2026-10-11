@@ -172,6 +172,20 @@ html[data-lang="zh"] .pubgroup > h3 { letter-spacing: .2em; }
 .venue a { font-family: var(--f-mono); font-size: .8rem; }
 .note { font-size: .85rem; color: var(--muted); }
 
+.guestbook-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 9px 16px; border: 1px solid var(--rule); border-radius: 6px;
+  color: var(--accent); background: var(--surface); text-decoration: none;
+  font-size: .9rem; font-weight: 500;
+}
+.guestbook-link:hover { border-color: var(--accent); background: var(--accent-soft); }
+.guestbook-panel { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.guestbook-panel summary { padding: 16px 20px; cursor: pointer; font-weight: 500; color: var(--accent); }
+.guestbook-panel[open] summary { border-bottom: 1px solid var(--rule); }
+.guestbook-content { padding: 20px; display: grid; gap: 16px; min-width: 0; }
+.giscus { min-width: 0; }
+.giscus[hidden], .guestbook-status[hidden] { display: none; }
+@media (max-width: 560px) { .guestbook-content { padding: 16px; } }
 .foot { padding-inline: 24px; padding-block: 0 40px; }
 .foot-inner { max-width: 1032px; margin: 0 auto; border-top: 1px solid var(--rule); padding-top: 20px; font-size: .82rem; color: var(--muted); }
 .wrap { padding-bottom: 56px; }
@@ -206,6 +220,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
       <a href="#research"><span class="en">Research</span><span class="zh">研究兴趣</span></a>
       <a href="#education"><span class="en">Education</span><span class="zh">教育经历</span></a>
       <a href="#publications"><span class="en">Publications</span><span class="zh">论文发表</span></a>
+      <a href="#guestbook"><span class="en">Guestbook</span><span class="zh">留言</span></a>
       <div class="toggles">
         <div class="themesw" role="group" aria-label="Theme / 主题">
           <button type="button" id="th-auto" data-theme-set="auto" aria-pressed="true" title="Follow system / 跟随系统" aria-label="Follow system / 跟随系统">
@@ -242,6 +257,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
       <div class="mail"><span>thshen@seu.edu.cn</span><button class="copy" type="button" id="copy-seu" data-mail="thshen@seu.edu.cn"><span class="en">Copy</span><span class="zh">复制</span></button></div>
       <div class="mail"><span>thshen@whu.edu.cn</span><button class="copy" type="button" id="copy-whu" data-mail="thshen@whu.edu.cn"><span class="en">Copy</span><span class="zh">复制</span></button></div>
       <div class="mail"><span>thshen@ihep.ac.cn</span><button class="copy" type="button" id="copy-ihep" data-mail="thshen@ihep.ac.cn"><span class="en">Copy</span><span class="zh">复制</span></button></div>
+      <a class="guestbook-link" href="#guestbook"><span aria-hidden="true">👍</span><span class="en">Like / Leave a message</span><span class="zh">点赞 / 留言</span></a>
     </div>
   </aside>
 
@@ -384,6 +400,18 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
         </ol>
       </div>
     </section>
+    <section id="guestbook" aria-labelledby="guestbook-heading">
+      <h2 id="guestbook-heading"><span class="en">Say hello</span><span class="zh">交流与留言</span></h2>
+      <p class="note"><span class="en">Enjoyed the site? Leave a 👍, share a research idea, or say hello. Sign in with GitHub to join in; reactions and messages are public.</span><span class="zh">如果您喜欢这个主页，欢迎点个 👍，也欢迎留言交流研究想法或打个招呼。登录 GitHub 后即可参与，点赞和留言会公开显示。</span></p>
+      <details class="guestbook-panel" id="guestbook-panel">
+        <summary><span aria-hidden="true">👍 </span><span class="en">Like / Leave a message</span><span class="zh">点赞 / 留言</span></summary>
+        <div class="guestbook-content">
+          <p class="note guestbook-status" id="guestbook-status" role="status" hidden><span class="en">The embedded guestbook could not load. You can still join the conversation on GitHub below.</span><span class="zh">互动区暂时无法加载，您仍可以通过下方链接在 GitHub 上点赞或留言。</span></p>
+          <div class="giscus"></div>
+          <p class="note"><a href="https://github.com/dantengs/dantengs.github.io/discussions/1" target="_blank" rel="noopener"><span class="en">Like or leave a message on GitHub ↗</span><span class="zh">在 GitHub 上点赞或留言 ↗</span></a></p>
+        </div>
+      </details>
+    </section>
   </main>
 
 </div>
@@ -432,6 +460,63 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
     b.addEventListener('click', function () { setTheme(b.dataset.themeSet, true); });
   });
 
+  // Load the guestbook only when the visitor opens it.
+  var guestbookPanel = document.getElementById('guestbook-panel');
+  var guestbookContainer = document.querySelector('.giscus');
+  var guestbookLoaded = false;
+  var guestbookMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  function guestbookConfig() {
+    var theme = root.getAttribute('data-theme');
+    return {
+      lang: root.getAttribute('data-lang') === 'zh' ? 'zh-CN' : 'en',
+      theme: theme === 'light' || theme === 'dark' ? theme : (guestbookMedia.matches ? 'dark' : 'light')
+    };
+  }
+  function syncGuestbook() {
+    var frame = guestbookContainer.querySelector('iframe.giscus-frame');
+    if (frame) frame.contentWindow.postMessage({ giscus: { setConfig: guestbookConfig() } }, 'https://giscus.app');
+  }
+  function guestbookFailed() {
+    guestbookContainer.hidden = true;
+    document.getElementById('guestbook-status').hidden = false;
+  }
+  function loadGuestbook() {
+    if (guestbookLoaded) return;
+    guestbookLoaded = true;
+    var config = guestbookConfig();
+    var script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    var attributes = {
+      'data-repo': 'dantengs/dantengs.github.io',
+      'data-repo-id': 'R_kgDOVEjJAw',
+      'data-category': 'Announcements',
+      'data-category-id': 'DIC_kwDOVEjJA84DHjAZ',
+      'data-mapping': 'number',
+      'data-term': '1',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '1',
+      'data-input-position': 'top',
+      'data-theme': config.theme,
+      'data-lang': config.lang
+    };
+    Object.keys(attributes).forEach(function (key) { script.setAttribute(key, attributes[key]); });
+    script.onerror = guestbookFailed;
+    guestbookContainer.appendChild(script);
+  }
+  guestbookPanel.addEventListener('toggle', function () { if (guestbookPanel.open) loadGuestbook(); });
+  document.querySelectorAll('a[href="#guestbook"]').forEach(function (link) {
+    link.addEventListener('click', function () { guestbookPanel.open = true; loadGuestbook(); });
+  });
+  if (location.hash === '#guestbook') { guestbookPanel.open = true; loadGuestbook(); }
+  new MutationObserver(syncGuestbook).observe(root, { attributes: true, attributeFilter: ['data-lang', 'data-theme'] });
+  guestbookMedia.addEventListener('change', syncGuestbook);
+  window.addEventListener('message', function (event) {
+    var frame = guestbookContainer.querySelector('iframe.giscus-frame');
+    if (event.origin !== 'https://giscus.app' || !frame || event.source !== frame.contentWindow) return;
+    if (event.data && event.data.giscus && typeof event.data.giscus.error === 'string') guestbookFailed();
+  });
   document.querySelectorAll('.copy').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var mail = btn.dataset.mail;
