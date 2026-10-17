@@ -114,10 +114,12 @@ p { margin: 0; max-width: 66ch; }
 .lede { font-family: var(--f-display); font-size: 1.35rem; line-height: 1.5; max-width: 34em; text-wrap: pretty; }
 html[data-lang="zh"] .lede { font-size: 1.2rem; line-height: 1.8; }
 
-.crossing {
-  margin: 4px 0 0; padding: 16px 20px 20px; border-left: 2px solid var(--accent);
-  background: var(--accent-soft); border-radius: 0 6px 6px 0; min-width: 0;
+.crossing-scroll {
+  margin-top: 4px; overflow-x: auto; min-width: 0;
+  border-left: 2px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0;
+  scrollbar-width: thin; scrollbar-color: var(--muted) transparent;
 }
+.crossing { margin: 0; padding: 16px 20px 20px; width: 100%; min-width: 560px; }
 .crossing-visual { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; }
 .crossing-visual svg { display: block; width: 100%; height: auto; color: var(--ink); }
 .crossing-visual .leg { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
@@ -125,10 +127,8 @@ html[data-lang="zh"] .lede { font-size: 1.2rem; line-height: 1.8; }
 .crossing-visual .vertex { fill: var(--accent); }
 .crossing-visual .field { font: italic 24px Georgia, "Times New Roman", serif; fill: currentColor; }
 .crossing-visual .operator { font: 23px Georgia, "Times New Roman", serif; fill: var(--accent); }
-.crossing-visual .weight { font: italic 23px Georgia, "Times New Roman", serif; fill: currentColor; }
 .crossing-visual .channel { font: 13px var(--f-mono); fill: var(--muted); }
 .crossing-equals { text-align: center; font: 2rem/1 Georgia, "Times New Roman", serif; color: var(--ink); }
-@media (max-width: 560px) { .crossing-visual { grid-template-columns: minmax(0, 1fr); gap: 0; } .crossing-visual svg { width: min(100%, 300px); justify-self: center; } }
 .crossing .eq { display: flex; align-items: center; justify-content: center; font-size: clamp(1.15rem, 3.7vw, 1.5rem); padding-block: 12px 4px; }
 .crossing math { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", "Libertinus Math", math; margin: 0; display: inline math; math-style: normal; color: var(--ink); }
 .interests { display: grid; gap: 0; border-top: 1px solid var(--rule); }
@@ -276,13 +276,11 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
         <span class="en">I work on the conformal bootstrap: constraining critical phenomena using only symmetry, unitarity and consistency, and studying the mathematics these constraints lead to. I am also interested in complex systems, AI, and how intelligence emerges.</span>
         <span class="zh">我的研究围绕共形自举展开：仅依靠对称性、幺正性与自洽性来约束临界现象，并研究由此引出的数学问题。我也关注复杂系统、AI 技术以及智能的涌现。</span>
       </p>
+      <div class="crossing-scroll" tabindex="0" role="region" aria-label="Crossing diagram and equation; scroll horizontally / 交叉对称图与公式，可横向滚动">
       <figure class="crossing">
         <div class="crossing-visual" role="img" aria-label="Crossing symmetry: two OPE channels / 交叉对称：两种 OPE 通道">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 234" aria-hidden="true" focusable="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 45 320 189" aria-hidden="true" focusable="false">
             <g text-anchor="middle">
-              <text class="weight" x="110" y="32">v<tspan baseline-shift="super" font-size="13">Δ<tspan baseline-shift="sub" font-size="10">φ</tspan></tspan></text>
-              <text class="weight" x="151" y="32" font-style="normal">∑<tspan x="151" dy="14" font-size="13">𝒪</tspan></text>
-              <text class="weight" x="195" y="32">λ<tspan baseline-shift="super" font-size="13">2</tspan><tspan baseline-shift="sub" font-size="13">φφ𝒪</tspan></text>
               <path class="leg" d="M80 76 L125 122 L80 168 M240 76 L195 122 L240 168"/>
               <path class="exchange" d="M125 122 H195"/>
               <circle class="vertex" cx="125" cy="122" r="4"/><circle class="vertex" cx="195" cy="122" r="4"/>
@@ -293,11 +291,8 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
             </g>
           </svg>
           <span class="crossing-equals" aria-hidden="true">=</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="340 0 320 234" aria-hidden="true" focusable="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="340 45 320 189" aria-hidden="true" focusable="false">
             <g text-anchor="middle">
-              <text class="weight" x="450" y="32">u<tspan baseline-shift="super" font-size="13">Δ<tspan baseline-shift="sub" font-size="10">φ</tspan></tspan></text>
-              <text class="weight" x="491" y="32" font-style="normal">∑<tspan x="491" dy="14" font-size="13">𝒪</tspan></text>
-              <text class="weight" x="535" y="32">λ<tspan baseline-shift="super" font-size="13">2</tspan><tspan baseline-shift="sub" font-size="13">φφ𝒪</tspan></text>
               <path class="leg" d="M420 76 L500 100 L580 76 M420 168 L500 144 L580 168"/>
               <path class="exchange" d="M500 100 V144"/>
               <circle class="vertex" cx="500" cy="100" r="4"/><circle class="vertex" cx="500" cy="144" r="4"/>
@@ -312,6 +307,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
           <math displaystyle="true" aria-label="sum over O of lambda phi phi O squared times F Delta ell of u v equals zero"><munder><mo largeop="true" movablelimits="false">∑</mo><mi>𝒪</mi></munder><msubsup><mi>λ</mi><mrow><mi>φ</mi><mi>φ</mi><mi>𝒪</mi></mrow><mn>2</mn></msubsup><msub><mi>F</mi><mrow><mi>Δ</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></math>
         </figcaption>
       </figure>
+      </div>
       <p class="note">
         <span class="en">During graduate study at Wuhan University I worked on lattice QCD calculations of charm-meson decays.</span>
         <span class="zh">在武汉大学读研期间，我从事粲介子衰变的格点 QCD 计算。</span>
