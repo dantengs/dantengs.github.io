@@ -119,15 +119,15 @@ html[data-lang="zh"] .lede { font-size: 1.2rem; line-height: 1.8; }
   border-left: 2px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0;
   scrollbar-width: thin; scrollbar-color: var(--muted) transparent;
 }
-.crossing { margin: 0; padding: 16px 20px 20px; width: 100%; min-width: 560px; }
-.crossing-visual { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; }
+.crossing { display: grid; row-gap: 20px; margin: 0; padding: 24px 32px 28px; width: 100%; min-width: 560px; }
+.crossing-visual { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: center; gap: 18px; width: 100%; max-width: 480px; justify-self: center; }
 .crossing-visual svg { display: block; width: 100%; height: auto; color: var(--ink); }
 .crossing-visual .leg { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
 .crossing-visual .exchange { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
 .crossing-visual .vertex { fill: var(--accent); }
 .crossing-visual .channel { font: 13px var(--f-mono); fill: var(--muted); }
-.crossing-equals { text-align: center; font: 2rem/1 Georgia, "Times New Roman", serif; color: var(--ink); }
-.crossing .eq { display: flex; align-items: center; justify-content: center; font-size: clamp(1.15rem, 3.7vw, 1.5rem); padding-block: 12px 4px; }
+.crossing-equals { text-align: center; font: 2rem/1 Georgia, "Times New Roman", serif; color: var(--ink); transform: translateY(-16px); }
+.crossing .eq { display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
 .crossing math { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", "Libertinus Math", math; margin: 0; display: inline math; math-style: normal; color: var(--ink); }
 .interests { display: grid; gap: 0; border-top: 1px solid var(--rule); }
 .interest {
@@ -275,21 +275,21 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
       <div class="crossing-scroll" tabindex="0" role="region" aria-label="Crossing diagram and equation; scroll horizontally / 交叉对称图与公式，可横向滚动">
       <figure class="crossing">
         <div class="crossing-visual" role="img" aria-label="Crossing symmetry of four identical scalar insertions at x1, x2, x3 and x4 / 同一标量算符在四个不同位置插入的交叉对称性">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 45 320 189" aria-hidden="true" focusable="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="56 64 208 150" aria-hidden="true" focusable="false">
             <g text-anchor="middle">
               <path class="leg" d="M80 76 L125 122 L80 168 M240 76 L195 122 L240 168"/>
               <path class="exchange" d="M125 122 H195"/>
               <circle class="vertex" cx="125" cy="122" r="4"/><circle class="vertex" cx="195" cy="122" r="4"/>
-              <text class="channel" x="160" y="224">s : (12)(34)</text>
+              <text class="channel" x="160" y="202">s : (12)(34)</text>
             </g>
           </svg>
           <span class="crossing-equals" aria-hidden="true">=</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="340 45 320 189" aria-hidden="true" focusable="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="396 64 208 150" aria-hidden="true" focusable="false">
             <g text-anchor="middle">
               <path class="leg" d="M420 76 L500 100 L580 76 M420 168 L500 144 L580 168"/>
               <path class="exchange" d="M500 100 V144"/>
               <circle class="vertex" cx="500" cy="100" r="4"/><circle class="vertex" cx="500" cy="144" r="4"/>
-              <text class="channel" x="500" y="224">t : (14)(23)</text>
+              <text class="channel" x="500" y="202">t : (14)(23)</text>
             </g>
           </svg>
         </div>
