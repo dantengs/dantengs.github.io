@@ -216,7 +216,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
   .lang button, .copy, .ptitle a { transition: background-color .15s, color .15s, border-color .15s; }
 }
 </style>
-<link rel="stylesheet" href="assets/conformal-lab.css">
+<link rel="stylesheet" href="assets/particle-playground.css">
 </head>
 <body>
 
@@ -320,43 +320,42 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
       </div>
     </section>
 
-    <section id="conformal-lab" data-state="idle" aria-labelledby="conformal-heading">
-      <h2 id="conformal-heading"><span class="en">Conformal geometry</span><span class="zh">共形几何</span></h2>
-      <p class="note"><span class="en">Explore a Möbius transformation on the Riemann sphere. Move the grid with the sliders: the four marked points keep the same cross ratio.</span><span class="zh">在黎曼球面上探索 Möbius 变换。调节参数，观察网格的形变：四个标记点的交比始终保持不变。</span></p>
-      <div class="conformal-card">
-        <div class="conformal-stage" id="conformal-stage">
-          <span class="conformal-badge">MÖBIUS / S²</span>
-          <div class="conformal-fallback" aria-hidden="true">
-            <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.1">
-              <circle cx="120" cy="120" r="88"/><ellipse cx="120" cy="120" rx="45" ry="88"/><ellipse cx="120" cy="120" rx="72" ry="88"/>
-              <ellipse cx="120" cy="120" rx="88" ry="30"/><ellipse cx="120" cy="120" rx="88" ry="65"/>
-              <path d="M120 32v176M32 120h176"/>
-            </svg>
+    <section id="conformal-lab" data-state="idle" data-active="false" data-mode="free" data-channel="s" aria-labelledby="conformal-heading">
+      <h2 id="conformal-heading"><span class="en">Particle playground</span><span class="zh">粒子游乐场</span></h2>
+      <p class="note"><span class="en">Drag the four portals to reshape the tracks. Click to launch light, hold the background to paint with particles, or try the target-chasing challenge.</span><span class="zh">拖动四个入口，重新布置线路。点击发射光粒子，按住空白处涂鸦，或者试试把光送进金色目标的追光挑战。</span></p>
+      <div class="playground-card">
+        <div class="playground-topline">
+          <div class="playground-modes" role="group" aria-label="Game mode / 玩法">
+            <button type="button" id="playground-free" aria-pressed="true" disabled><span class="en">Free play</span><span class="zh">自由涂鸦</span></button>
+            <button type="button" id="playground-challenge" aria-pressed="false" disabled><span class="en">Chase the light</span><span class="zh">追光挑战</span></button>
           </div>
-          <div class="conformal-invariant"><span class="en">Cross ratio χ</span><span class="zh">交比 χ</span><output id="conformal-ratio">—</output><span class="en">· invariant</span><span class="zh">· 保持不变</span></div>
+          <span id="playground-channel"><span class="en">S channel</span><span class="zh">S 通道</span></span>
         </div>
-        <div class="conformal-controls">
-          <div class="conformal-sliders">
-            <div class="conformal-control">
-              <label for="conformal-scale"><span class="en">Scale s</span><span class="zh">缩放 s</span></label><output id="conformal-scale-value" for="conformal-scale">1.00×</output>
-              <input id="conformal-scale" type="range" min="0.45" max="2.2" step="0.01" value="1" disabled>
-            </div>
-            <div class="conformal-control">
-              <label for="conformal-shift"><span class="en">Translation a</span><span class="zh">平移 a</span></label><output id="conformal-shift-value" for="conformal-shift">0.00</output>
-              <input id="conformal-shift" type="range" min="-1.2" max="1.2" step="0.01" value="0" disabled>
-            </div>
+        <div class="playground-stage" id="playground-stage">
+          <div class="playground-placeholder" aria-hidden="true"><svg viewBox="0 0 400 240" fill="none" stroke="currentColor" stroke-width="2"><path d="M65 55L145 120L65 185M335 55L255 120L335 185M145 120H255"/><circle cx="65" cy="55" r="12"/><circle cx="65" cy="185" r="12"/><circle cx="335" cy="185" r="12"/><circle cx="335" cy="55" r="12"/></svg></div>
+          <div class="playground-hud">
+            <span><span id="playground-score-label"><span class="en">Sparks</span><span class="zh">火花</span></span> <output id="playground-score">0</output></span>
+            <span id="playground-goal" hidden><span class="en">Target</span><span class="zh">目标</span> <output id="playground-target">3</output> · <output id="playground-hits">0 / 8</output></span>
           </div>
-          <div class="conformal-actions">
-            <span class="conformal-equation"><math aria-label="w equals s z plus a"><mi>w</mi><mo>=</mo><mi>s</mi><mi>z</mi><mo>+</mo><mi>a</mi></math></span>
-            <div class="conformal-buttons">
-              <button type="button" id="conformal-play" aria-pressed="false" disabled><span class="en">Auto-rotate</span><span class="zh">自动旋转</span></button>
-              <button type="button" id="conformal-reset" disabled><span class="en">Reset</span><span class="zh">重置</span></button>
-            </div>
-          </div>
-          <p class="conformal-hint" id="conformal-hint"><span class="en">Drag horizontally to rotate · arrow keys to adjust the view · pause for a closer look</span><span class="zh">横向拖动旋转 · 方向键微调视角 · 可暂停后细看</span></p>
+          <button type="button" class="playground-port" data-port="0" style="--port-color:#7ea9ff" aria-label="Launch from portal 1 / 从入口 1 发射" disabled>1</button>
+          <button type="button" class="playground-port" data-port="1" style="--port-color:#5de4cb" aria-label="Launch from portal 2 / 从入口 2 发射" disabled>2</button>
+          <button type="button" class="playground-port" data-port="2" style="--port-color:#f49b92" aria-label="Launch from portal 3 / 从入口 3 发射" disabled>3</button>
+          <button type="button" class="playground-port" data-port="3" style="--port-color:#c5a2ff" aria-label="Launch from portal 4 / 从入口 4 发射" disabled>4</button>
+          <button type="button" class="playground-start" id="playground-start" disabled><span class="en">Click here. Make a little chaos.</span><span class="zh">点一下，制造一点小混乱</span></button>
+          <span class="playground-combo" id="playground-combo" hidden></span>
         </div>
-        <p class="conformal-message" id="conformal-message" role="status" hidden><span class="en">Showing a static preview. Interactive 3D is unavailable in this browser.</span><span class="zh">当前浏览器显示静态预览，暂时无法使用 3D 交互。</span></p>
-        <noscript><p class="conformal-message"><span class="en">Enable JavaScript to explore the interactive sphere.</span><span class="zh">启用 JavaScript 后可探索互动球面。</span></p></noscript>
+        <div class="playground-controls">
+          <div class="playground-actions">
+            <button type="button" id="playground-launch" class="playground-primary" disabled><span class="en">Launch</span><span class="zh">发射一波</span></button>
+            <button type="button" id="playground-switch" aria-keyshortcuts="C" disabled><span class="en">Switch S/T</span><span class="zh">切换 S/T</span></button>
+            <button type="button" id="playground-pause" aria-pressed="false" disabled><span class="en">Pause</span><span class="zh">暂停</span></button>
+            <button type="button" id="playground-reset" disabled><span class="en">Reset</span><span class="zh">重置</span></button>
+          </div>
+          <p class="playground-status" id="playground-status" role="status"><span class="en">Pick a portal or tap the board to get started.</span><span class="zh">点一个入口，或者点一下画面，就能开始。</span></p>
+          <p class="playground-hint" id="playground-hint"><span class="en">Drag portals · hold the board to paint · keys 1–4 launch, C switches channels. On phones, scroll outside the board.</span><span class="zh">拖入口改线 · 按住空白涂鸦 · 1–4 发射，C 换通道。手机可在画面外滑动页面。</span></p>
+          <p class="playground-hint"><span class="en">A crossing-channel themed light toy.</span><span class="zh">一个交叉通道主题的光线小游戏。</span></p>
+        </div>
+        <p class="playground-message" id="playground-message" role="status" hidden><span class="en">The interactive board could not load in this browser.</span><span class="zh">当前浏览器暂时无法加载互动棋盘。</span></p>
       </div>
     </section>
 
@@ -599,6 +598,6 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
 })();
 </script>
 
-<script type="module" src="assets/conformal-lab.js"></script>
+<script type="module" src="assets/particle-playground.js"></script>
 </body>
 </html>
