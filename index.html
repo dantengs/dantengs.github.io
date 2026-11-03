@@ -114,21 +114,6 @@ p { margin: 0; max-width: 66ch; }
 .lede { font-family: var(--f-display); font-size: 1.35rem; line-height: 1.5; max-width: 34em; text-wrap: pretty; }
 html[data-lang="zh"] .lede { font-size: 1.2rem; line-height: 1.8; }
 
-.crossing-scroll {
-  margin-top: 4px; overflow-x: auto; min-width: 0;
-  border-left: 2px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0;
-  scrollbar-width: thin; scrollbar-color: var(--muted) transparent;
-}
-.crossing { display: grid; row-gap: 20px; margin: 0; padding: 24px 32px 28px; width: 100%; min-width: 560px; }
-.crossing-visual { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: center; gap: 18px; width: 100%; max-width: 480px; justify-self: center; }
-.crossing-visual svg { display: block; width: 100%; height: auto; color: var(--ink); }
-.crossing-visual .leg { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
-.crossing-visual .exchange { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
-.crossing-visual .vertex { fill: var(--accent); }
-.crossing-visual .channel { font: 13px var(--f-mono); fill: var(--muted); }
-.crossing-equals { text-align: center; font: 2rem/1 Georgia, "Times New Roman", serif; color: var(--ink); transform: translateY(-16px); }
-.crossing .eq { display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-.crossing math { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", "Libertinus Math", math; margin: 0; display: inline math; math-style: normal; color: var(--ink); }
 .interests { display: grid; gap: 0; border-top: 1px solid var(--rule); }
 .interest {
   display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px;
@@ -216,7 +201,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
   .lang button, .copy, .ptitle a { transition: background-color .15s, color .15s, border-color .15s; }
 }
 </style>
-<link rel="stylesheet" href="assets/particle-playground.css">
+<link rel="stylesheet" href="assets/particle-card.css">
 </head>
 <body>
 
@@ -274,32 +259,6 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
         <span class="en">I work on the conformal bootstrap: constraining critical phenomena using only symmetry, unitarity and consistency, and studying the mathematics these constraints lead to. I am also interested in complex systems, AI, and how intelligence emerges.</span>
         <span class="zh">我的研究围绕共形自举展开：仅依靠对称性、幺正性与自洽性来约束临界现象，并研究由此引出的数学问题。我也关注复杂系统、AI 技术以及智能的涌现。</span>
       </p>
-      <div class="crossing-scroll" tabindex="0" role="region" aria-label="Crossing diagram and equation; scroll horizontally / 交叉对称图与公式，可横向滚动">
-      <figure class="crossing">
-        <div class="crossing-visual" role="img" aria-label="Crossing symmetry of four identical scalar insertions at x1, x2, x3 and x4 / 同一标量算符在四个不同位置插入的交叉对称性">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="56 64 208 150" aria-hidden="true" focusable="false">
-            <g text-anchor="middle">
-              <path class="leg" d="M80 76 L125 122 L80 168 M240 76 L195 122 L240 168"/>
-              <path class="exchange" d="M125 122 H195"/>
-              <circle class="vertex" cx="125" cy="122" r="4"/><circle class="vertex" cx="195" cy="122" r="4"/>
-              <text class="channel" x="160" y="202">s : (12)(34)</text>
-            </g>
-          </svg>
-          <span class="crossing-equals" aria-hidden="true">=</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="396 64 208 150" aria-hidden="true" focusable="false">
-            <g text-anchor="middle">
-              <path class="leg" d="M420 76 L500 100 L580 76 M420 168 L500 144 L580 168"/>
-              <path class="exchange" d="M500 100 V144"/>
-              <circle class="vertex" cx="500" cy="100" r="4"/><circle class="vertex" cx="500" cy="144" r="4"/>
-              <text class="channel" x="500" y="202">t : (14)(23)</text>
-            </g>
-          </svg>
-        </div>
-        <figcaption class="eq">
-          <math displaystyle="true" aria-label="sum over O of lambda phi phi O squared times F Delta ell of u v equals zero"><munder><mo largeop="true" movablelimits="false">∑</mo><mi>𝒪</mi></munder><msubsup><mi>λ</mi><mrow><mi>φ</mi><mi>φ</mi><mi>𝒪</mi></mrow><mn>2</mn></msubsup><msub><mi>F</mi><mrow><mi>Δ</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></math>
-        </figcaption>
-      </figure>
-      </div>
     </section>
 
     <section id="research">
@@ -320,43 +279,32 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
       </div>
     </section>
 
-    <section id="conformal-lab" data-state="idle" data-active="false" data-mode="free" data-channel="s" aria-labelledby="conformal-heading">
-      <h2 id="conformal-heading"><span class="en">Particle playground</span><span class="zh">粒子游乐场</span></h2>
-      <p class="note"><span class="en">Drag the four portals to reshape the tracks. Click to launch light, hold the background to paint with particles, or try the target-chasing challenge.</span><span class="zh">拖动四个入口，重新布置线路。点击发射光粒子，按住空白处涂鸦，或者试试把光送进金色目标的追光挑战。</span></p>
-      <div class="playground-card">
-        <div class="playground-topline">
-          <div class="playground-modes" role="group" aria-label="Game mode / 玩法">
-            <button type="button" id="playground-free" aria-pressed="true" disabled><span class="en">Free play</span><span class="zh">自由涂鸦</span></button>
-            <button type="button" id="playground-challenge" aria-pressed="false" disabled><span class="en">Chase the light</span><span class="zh">追光挑战</span></button>
-          </div>
-          <span id="playground-channel"><span class="en">S channel</span><span class="zh">S 通道</span></span>
+    <section id="conformal-lab" data-state="idle" aria-labelledby="conformal-heading">
+      <h2 id="conformal-heading">Crossing ↔ Ising</h2>
+      <div class="flip-stage" id="flip-stage">
+        <div class="flip-fallback">
+          <svg viewBox="0 0 700 200" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M60 30L130 90L60 150M270 30L200 90L270 150M130 90H200M430 30L525 65L620 30M430 150L525 115L620 150M525 65V115"/><path d="M330 85h20M330 96h20"/></svg>
+          <math displaystyle="true" aria-label="sum over O of lambda phi phi O squared F Delta ell of u v equals zero"><munder><mo>∑</mo><mi>𝒪</mi></munder><msubsup><mi>λ</mi><mrow><mi>φ</mi><mi>φ</mi><mi>𝒪</mi></mrow><mn>2</mn></msubsup><msub><mi>F</mi><mrow><mi>Δ</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>)</mo><mo>=</mo><mn>0</mn></math>
         </div>
-        <div class="playground-stage" id="playground-stage">
-          <div class="playground-placeholder" aria-hidden="true"><svg viewBox="0 0 400 240" fill="none" stroke="currentColor" stroke-width="2"><path d="M65 55L145 120L65 185M335 55L255 120L335 185M145 120H255"/><circle cx="65" cy="55" r="12"/><circle cx="65" cy="185" r="12"/><circle cx="335" cy="185" r="12"/><circle cx="335" cy="55" r="12"/></svg></div>
-          <div class="playground-hud">
-            <span><span id="playground-score-label"><span class="en">Sparks</span><span class="zh">火花</span></span> <output id="playground-score">0</output></span>
-            <span id="playground-goal" hidden><span class="en">Target</span><span class="zh">目标</span> <output id="playground-target">3</output> · <output id="playground-hits">0 / 8</output></span>
-          </div>
-          <button type="button" class="playground-port" data-port="0" style="--port-color:#7ea9ff" aria-label="Launch from portal 1 / 从入口 1 发射" disabled>1</button>
-          <button type="button" class="playground-port" data-port="1" style="--port-color:#5de4cb" aria-label="Launch from portal 2 / 从入口 2 发射" disabled>2</button>
-          <button type="button" class="playground-port" data-port="2" style="--port-color:#f49b92" aria-label="Launch from portal 3 / 从入口 3 发射" disabled>3</button>
-          <button type="button" class="playground-port" data-port="3" style="--port-color:#c5a2ff" aria-label="Launch from portal 4 / 从入口 4 发射" disabled>4</button>
-          <button type="button" class="playground-start" id="playground-start" disabled><span class="en">Click here. Make a little chaos.</span><span class="zh">点一下，制造一点小混乱</span></button>
-          <span class="playground-combo" id="playground-combo" hidden></span>
-        </div>
-        <div class="playground-controls">
-          <div class="playground-actions">
-            <button type="button" id="playground-launch" class="playground-primary" disabled><span class="en">Launch</span><span class="zh">发射一波</span></button>
-            <button type="button" id="playground-switch" aria-keyshortcuts="C" disabled><span class="en">Switch S/T</span><span class="zh">切换 S/T</span></button>
-            <button type="button" id="playground-pause" aria-pressed="false" disabled><span class="en">Pause</span><span class="zh">暂停</span></button>
-            <button type="button" id="playground-reset" disabled><span class="en">Reset</span><span class="zh">重置</span></button>
-          </div>
-          <p class="playground-status" id="playground-status" role="status"><span class="en">Pick a portal or tap the board to get started.</span><span class="zh">点一个入口，或者点一下画面，就能开始。</span></p>
-          <p class="playground-hint" id="playground-hint"><span class="en">Drag portals · hold the board to paint · keys 1–4 launch, C switches channels. On phones, scroll outside the board.</span><span class="zh">拖入口改线 · 按住空白涂鸦 · 1–4 发射，C 换通道。手机可在画面外滑动页面。</span></p>
-          <p class="playground-hint"><span class="en">A crossing-channel themed light toy.</span><span class="zh">一个交叉通道主题的光线小游戏。</span></p>
-        </div>
-        <p class="playground-message" id="playground-message" role="status" hidden><span class="en">The interactive board could not load in this browser.</span><span class="zh">当前浏览器暂时无法加载互动棋盘。</span></p>
+        <span class="flip-state" id="flip-state"><span class="en">Crossing equation</span><span class="zh">Crossing equation</span></span>
+        <span class="flip-hover" id="flip-hover" hidden><span class="en">Held in place</span><span class="zh">悬停中</span></span>
       </div>
+      <div class="flip-controls">
+        <div class="flip-views" role="group" aria-label="Card views / 卡片视角">
+          <button type="button" disabled id="flip-front" aria-pressed="true"><span class="en">Equation</span><span class="zh">方程</span></button>
+          <button type="button" disabled id="flip-scatter" aria-pressed="false"><span class="en">Scatter</span><span class="zh">散开</span></button>
+          <button type="button" disabled id="flip-back" aria-pressed="false">Ising island</button>
+        </div>
+        <button type="button" disabled id="flip-auto" aria-pressed="true"><span class="en">Auto-flip</span><span class="zh">自动翻转</span></button>
+      </div>
+      <div class="flip-angle-row">
+        <label for="flip-angle"><span class="en">Rotation</span><span class="zh">旋转角度</span></label>
+        <input type="range" disabled id="flip-angle" min="0" max="360" step="1" value="0" aria-label="Rotation angle / 旋转角度">
+        <output for="flip-angle" id="flip-angle-value">0°</output>
+      </div>
+      <p class="flip-hint" id="flip-instructions"><span class="en">Drag to turn 360° · hover to freeze the particles · use the slider to stop at any angle</span><span class="zh">拖动可转满 360° · 悬停冻结粒子 · 用滑条停在任意角度</span></p>
+      <p class="flip-source"><span class="en">Ising outline digitized from </span><span class="zh">Ising 轮廓数字化自 </span><a href="https://arxiv.org/abs/1603.04436" target="_blank" rel="noopener">Kos et al. (2016), Fig. 1 · Λ = 43</a></p>
+      <p class="flip-message" id="flip-message" hidden><span class="en">Showing the static front. This browser cannot display the 3D card.</span><span class="zh">当前浏览器显示静态正面，暂时无法加载 3D 卡片。</span></p>
     </section>
 
 
@@ -598,6 +546,6 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
 })();
 </script>
 
-<script type="module" src="assets/particle-playground.js"></script>
+<script type="module" src="assets/particle-card.js"></script>
 </body>
 </html>
