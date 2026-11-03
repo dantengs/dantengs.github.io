@@ -216,6 +216,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
   .lang button, .copy, .ptitle a { transition: background-color .15s, color .15s, border-color .15s; }
 }
 </style>
+<link rel="stylesheet" href="assets/conformal-lab.css">
 </head>
 <body>
 
@@ -224,6 +225,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
     <div class="brand"><span class="en">Tinghong Shen</span><span class="zh">沈庭弘</span></div>
     <nav class="nav" aria-label="Sections">
       <a href="#research"><span class="en">Research</span><span class="zh">研究兴趣</span></a>
+      <a href="#conformal-lab"><span class="en">Explore</span><span class="zh">探索</span></a>
       <a href="#education"><span class="en">Education</span><span class="zh">教育经历</span></a>
       <a href="#publications"><span class="en">Publications</span><span class="zh">论文发表</span></a>
       <a href="#guestbook"><span class="en">Guestbook</span><span class="zh">留言</span></a>
@@ -317,6 +319,47 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
         </div>
       </div>
     </section>
+
+    <section id="conformal-lab" data-state="idle" aria-labelledby="conformal-heading">
+      <h2 id="conformal-heading"><span class="en">Conformal geometry</span><span class="zh">共形几何</span></h2>
+      <p class="note"><span class="en">Explore a Möbius transformation on the Riemann sphere. Move the grid with the sliders: the four marked points keep the same cross ratio.</span><span class="zh">在黎曼球面上探索 Möbius 变换。调节参数，观察网格的形变：四个标记点的交比始终保持不变。</span></p>
+      <div class="conformal-card">
+        <div class="conformal-stage" id="conformal-stage">
+          <span class="conformal-badge">MÖBIUS / S²</span>
+          <div class="conformal-fallback" aria-hidden="true">
+            <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.1">
+              <circle cx="120" cy="120" r="88"/><ellipse cx="120" cy="120" rx="45" ry="88"/><ellipse cx="120" cy="120" rx="72" ry="88"/>
+              <ellipse cx="120" cy="120" rx="88" ry="30"/><ellipse cx="120" cy="120" rx="88" ry="65"/>
+              <path d="M120 32v176M32 120h176"/>
+            </svg>
+          </div>
+          <div class="conformal-invariant"><span class="en">Cross ratio χ</span><span class="zh">交比 χ</span><output id="conformal-ratio">—</output><span class="en">· invariant</span><span class="zh">· 保持不变</span></div>
+        </div>
+        <div class="conformal-controls">
+          <div class="conformal-sliders">
+            <div class="conformal-control">
+              <label for="conformal-scale"><span class="en">Scale s</span><span class="zh">缩放 s</span></label><output id="conformal-scale-value" for="conformal-scale">1.00×</output>
+              <input id="conformal-scale" type="range" min="0.45" max="2.2" step="0.01" value="1" disabled>
+            </div>
+            <div class="conformal-control">
+              <label for="conformal-shift"><span class="en">Translation a</span><span class="zh">平移 a</span></label><output id="conformal-shift-value" for="conformal-shift">0.00</output>
+              <input id="conformal-shift" type="range" min="-1.2" max="1.2" step="0.01" value="0" disabled>
+            </div>
+          </div>
+          <div class="conformal-actions">
+            <span class="conformal-equation"><math aria-label="w equals s z plus a"><mi>w</mi><mo>=</mo><mi>s</mi><mi>z</mi><mo>+</mo><mi>a</mi></math></span>
+            <div class="conformal-buttons">
+              <button type="button" id="conformal-play" aria-pressed="false" disabled><span class="en">Auto-rotate</span><span class="zh">自动旋转</span></button>
+              <button type="button" id="conformal-reset" disabled><span class="en">Reset</span><span class="zh">重置</span></button>
+            </div>
+          </div>
+          <p class="conformal-hint" id="conformal-hint"><span class="en">Drag horizontally to rotate · arrow keys to adjust the view · pause for a closer look</span><span class="zh">横向拖动旋转 · 方向键微调视角 · 可暂停后细看</span></p>
+        </div>
+        <p class="conformal-message" id="conformal-message" role="status" hidden><span class="en">Showing a static preview. Interactive 3D is unavailable in this browser.</span><span class="zh">当前浏览器显示静态预览，暂时无法使用 3D 交互。</span></p>
+        <noscript><p class="conformal-message"><span class="en">Enable JavaScript to explore the interactive sphere.</span><span class="zh">启用 JavaScript 后可探索互动球面。</span></p></noscript>
+      </div>
+    </section>
+
 
     <section id="education">
       <h2><span class="en">Education</span><span class="zh">教育经历</span></h2>
@@ -441,7 +484,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
 
 <footer class="foot">
   <div class="foot-inner">
-    <span class="en">Last updated October 2026.</span><span class="zh">最后更新：2026 年 10 月。</span>
+    <span class="en">Last updated November 2026.</span><span class="zh">最后更新：2026 年 11 月。</span>
   </div>
 </footer>
 
@@ -556,5 +599,6 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
 })();
 </script>
 
+<script type="module" src="assets/conformal-lab.js"></script>
 </body>
 </html>
