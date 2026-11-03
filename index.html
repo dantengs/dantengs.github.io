@@ -201,7 +201,7 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
   .lang button, .copy, .ptitle a { transition: background-color .15s, color .15s, border-color .15s; }
 }
 </style>
-<link rel="stylesheet" href="assets/particle-card.css">
+<link rel="stylesheet" href="assets/particle-card.css?v=hd2">
 </head>
 <body>
 
@@ -279,32 +279,11 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
       </div>
     </section>
 
-    <section id="conformal-lab" data-state="idle" aria-labelledby="conformal-heading">
-      <h2 id="conformal-heading">Crossing ↔ Ising</h2>
+    <section id="conformal-lab" data-state="idle" aria-label="Crossing equation and Ising island particle card">
       <div class="flip-stage" id="flip-stage">
-        <div class="flip-fallback">
-          <svg viewBox="0 0 700 200" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M60 30L130 90L60 150M270 30L200 90L270 150M130 90H200M430 30L525 65L620 30M430 150L525 115L620 150M525 65V115"/><path d="M330 85h20M330 96h20"/></svg>
-          <math displaystyle="true" aria-label="sum over O of lambda phi phi O squared F Delta ell of u v equals zero"><munder><mo>∑</mo><mi>𝒪</mi></munder><msubsup><mi>λ</mi><mrow><mi>φ</mi><mi>φ</mi><mi>𝒪</mi></mrow><mn>2</mn></msubsup><msub><mi>F</mi><mrow><mi>Δ</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>)</mo><mo>=</mo><mn>0</mn></math>
-        </div>
-        <span class="flip-state" id="flip-state"><span class="en">Crossing equation</span><span class="zh">Crossing equation</span></span>
-        <span class="flip-hover" id="flip-hover" hidden><span class="en">Held in place</span><span class="zh">悬停中</span></span>
+        <div class="flip-sharp" id="flip-sharp"><img id="flip-image" src="assets/crossing-front-light.svg" alt="Crossing symmetry: sum over O of lambda phi phi O squared times F Delta ell(u,v) equals zero" draggable="false"></div>
       </div>
-      <div class="flip-controls">
-        <div class="flip-views" role="group" aria-label="Card views / 卡片视角">
-          <button type="button" disabled id="flip-front" aria-pressed="true"><span class="en">Equation</span><span class="zh">方程</span></button>
-          <button type="button" disabled id="flip-scatter" aria-pressed="false"><span class="en">Scatter</span><span class="zh">散开</span></button>
-          <button type="button" disabled id="flip-back" aria-pressed="false">Ising island</button>
-        </div>
-        <button type="button" disabled id="flip-auto" aria-pressed="true"><span class="en">Auto-flip</span><span class="zh">自动翻转</span></button>
-      </div>
-      <div class="flip-angle-row">
-        <label for="flip-angle"><span class="en">Rotation</span><span class="zh">旋转角度</span></label>
-        <input type="range" disabled id="flip-angle" min="0" max="360" step="1" value="0" aria-label="Rotation angle / 旋转角度">
-        <output for="flip-angle" id="flip-angle-value">0°</output>
-      </div>
-      <p class="flip-hint" id="flip-instructions"><span class="en">Drag to turn 360° · hover to freeze the particles · use the slider to stop at any angle</span><span class="zh">拖动可转满 360° · 悬停冻结粒子 · 用滑条停在任意角度</span></p>
-      <p class="flip-source"><span class="en">Ising outline digitized from </span><span class="zh">Ising 轮廓数字化自 </span><a href="https://arxiv.org/abs/1603.04436" target="_blank" rel="noopener">Kos et al. (2016), Fig. 1 · Λ = 43</a></p>
-      <p class="flip-message" id="flip-message" hidden><span class="en">Showing the static front. This browser cannot display the 3D card.</span><span class="zh">当前浏览器显示静态正面，暂时无法加载 3D 卡片。</span></p>
+      <input class="flip-angle" type="range" disabled id="flip-angle" min="0" max="360" step="1" value="0" aria-label="Card rotation angle / 卡片旋转角度">
     </section>
 
 
@@ -546,6 +525,6 @@ html[data-lang="zh"] .name { letter-spacing: .08em; }
 })();
 </script>
 
-<script type="module" src="assets/particle-card.js"></script>
+<script type="module" src="assets/particle-card.js?v=hd2"></script>
 </body>
 </html>

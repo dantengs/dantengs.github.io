@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 760" width="1200" height="760" role="img"><title>3D Ising island</title><desc>Digitized vector boundary from Kos, Poland, Simmons-Duffin and Vichi (2016), arXiv:1603.04436, Figure 1, Lambda=43; mixed-correlator bootstrap.</desc><metadata>{"title": "Precision Islands in the Ising and O(N) Models", "authors": "Kos, Poland, Simmons-Duffin, Vichi", "year": 2016, "url": "https://arxiv.org/abs/1603.04436", "figure": 1, "lambda": 43, "method": "Polygon digitized from the vector path of the Figure 1 inset, PDF page 4. These are figure-outline coordinates, not the authors original numerical scan data."}</metadata><text x="88" y="104" font-size="53" fill="#17202a" text-anchor="start" font-family="Georgia, Times New Roman, serif">3D Ising island</text><text x="1106" y="104" font-size="31" fill="#65717f" text-anchor="end" font-family="Georgia, Times New Roman, serif">Λ = 43</text><path d="M288 165V535H1016" fill="none" stroke="#65717f" stroke-width="2.5" /><path d="M468.00000000499597 535v10" stroke="#65717f" stroke-width="2.5" /><text x="468.00000000499597" y="587" font-size="31" fill="#65717f" text-anchor="middle" font-family="Georgia, Times New Roman, serif">0.518148</text><path d="M647.9999999900081 535v10" stroke="#65717f" stroke-width="2.5" /><text x="647.9999999900081" y="587" font-size="31" fill="#65717f" text-anchor="middle" font-family="Georgia, Times New Roman, serif">0.518149</text><path d="M827.999999995004 535v10" stroke="#65717f" stroke-width="2.5" /><text x="827.999999995004" y="587" font-size="31" fill="#65717f" text-anchor="middle" font-family="Georgia, Times New Roman, serif">0.518150</text><path d="M278 523.5937500009497h10" stroke="#65717f" stroke-width="2.5" /><text x="264" y="534.5937500009497" font-size="31" fill="#65717f" text-anchor="end" font-family="Georgia, Times New Roman, serif">1.41261</text><path d="M278 352.5h10" stroke="#65717f" stroke-width="2.5" /><text x="264" y="363.5" font-size="31" fill="#65717f" text-anchor="end" font-family="Georgia, Times New Roman, serif">1.412625</text><path d="M278 181.40625000158292h10" stroke="#65717f" stroke-width="2.5" /><text x="264" y="192.40625000158292" font-size="31" fill="#65717f" text-anchor="end" font-family="Georgia, Times New Roman, serif">1.41264</text><g transform="translate(1021 550) rotate(0) scale(1.0294117647058822)"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="xaxis-figure_1">
+  <g id="xaxis-text_1">
+
+   <g style="fill: #17202a" transform="translate(0 41) scale(0.6 -0.6)">
+    <defs>
+     <path id="xaxis-STIXGeneral-Regular-394" d="M 4320 0  L 307 0  L 2221 4314  L 2349 4314  L 4320 0  z M 3354 589  L 2118 3405  L 870 589  L 3354 589  z " transform="scale(0.015625)" />
+     <path id="xaxis-STIXGeneral-Italic-3c3" d="M 3398 2739  L 3283 2266  L 2195 2266  Q 2291 2112 2457 1981  Q 2624 1850 2717 1725  Q 2810 1600 2810 1389  Q 2810 851 2288 390  Q 1766 -70 1107 -70  Q 659 -70 416 170  Q 173 410 173 832  Q 173 1274 409 1706  Q 646 2138 1113 2438  Q 1581 2739 2157 2739  L 3398 2739  z M 2272 1414  Q 2272 1709 2166 1939  Q 2061 2170 1901 2266  Q 1530 2266 1120 1770  Q 710 1274 710 640  Q 710 358 844 211  Q 979 64 1210 64  Q 1638 64 1955 525  Q 2272 986 2272 1414  z " transform="scale(0.015625)" />
+    </defs>
+    <use xlink:href="#xaxis-STIXGeneral-Regular-394" transform="translate(0 0.59375)" />
+    <use xlink:href="#xaxis-STIXGeneral-Italic-3c3" transform="translate(73.743263 -12.634375) scale(0.7)" />
+   </g>
+  </g>
+ </g>
+</g><g transform="translate(65 370) rotate(-90) scale(1.0606060606060606)"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="yaxis-figure_1">
+  <g id="yaxis-text_1">
+
+   <g style="fill: #17202a" transform="translate(0 41) scale(0.6 -0.6)">
+    <defs>
+     <path id="yaxis-STIXGeneral-Regular-394" d="M 4320 0  L 307 0  L 2221 4314  L 2349 4314  L 4320 0  z M 3354 589  L 2118 3405  L 870 589  L 3354 589  z " transform="scale(0.015625)" />
+     <path id="yaxis-STIXGeneral-Italic-3b5" d="M 2304 627  L 2406 563  Q 1907 -70 1133 -70  Q 192 -70 192 640  Q 192 928 403 1158  Q 614 1389 934 1472  Q 774 1498 684 1616  Q 595 1734 595 1882  Q 602 2266 995 2544  Q 1389 2822 2029 2822  Q 2336 2822 2528 2672  Q 2720 2522 2720 2291  Q 2720 2163 2617 2080  Q 2515 1997 2413 1997  Q 2298 1997 2230 2067  Q 2163 2138 2163 2253  Q 2163 2317 2211 2409  Q 2259 2502 2259 2560  Q 2259 2688 2022 2688  Q 1683 2688 1401 2496  Q 1120 2304 1120 1907  Q 1120 1741 1251 1654  Q 1382 1568 1594 1568  Q 1613 1568 1728 1590  Q 1843 1613 1932 1613  Q 2022 1613 2086 1574  Q 2150 1536 2150 1478  Q 2150 1306 1862 1306  Q 1805 1306 1721 1334  Q 1638 1363 1568 1363  Q 1286 1363 1014 1184  Q 742 1005 742 678  Q 742 410 908 285  Q 1075 160 1312 160  Q 1869 160 2304 627  z " transform="scale(0.015625)" />
+    </defs>
+    <use xlink:href="#yaxis-STIXGeneral-Regular-394" transform="translate(0 0.59375)" />
+    <use xlink:href="#yaxis-STIXGeneral-Italic-3b5" transform="translate(73.743263 -12.634375) scale(0.7)" />
+   </g>
+  </g>
+ </g>
+</g><path d="M470.93595,471.02930 L595.79677,404.96247 L690.49649,348.69974 L780.23873,289.40980 L822.50401,253.60480 L857.12497,218.28148 L817.46031,232.24220 L691.96431,295.00518 L604.92443,354.12907 L563.79163,383.53802 L542.66153,401.44058 L490.73516,448.09125 Z" fill="#2c4c9c" fill-opacity="0.2" stroke="#2c4c9c" stroke-width="4.2" stroke-linejoin="round" /><text x="600" y="658" font-size="29" fill="#65717f" text-anchor="middle" font-family="Georgia, Times New Roman, serif">Mixed-correlator bootstrap</text></svg>
